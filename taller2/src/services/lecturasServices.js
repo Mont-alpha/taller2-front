@@ -1,14 +1,20 @@
 const key = 'lecturas';
 
-const guardarletura = (lectura) => {
+const guardarLectura = (lectura) => {
     const localStorageLecturas = localStorage.getItem(key);
     const lecturas = localStorageLecturas ? JSON.parse(localStorageLecturas) : [];
-    lecturas.push(lectura);
+    const nuevaLectura = { ...lectura, id: Date.now() }; 
+    lecturas.push(nuevaLectura);
     localStorage.setItem(key, JSON.stringify(lecturas));
 }
 const obtenerLecturas = () => {
     const localStorageLecturas = localStorage.getItem(key);
     return localStorageLecturas ? JSON.parse(localStorageLecturas) : [];
+}
+const obtenerLecturasPorMedida = (medida) => {
+    const localStorageLecturas = localStorage.getItem(key);
+    const lecturas = localStorageLecturas ? JSON.parse(localStorageLecturas) : [];
+    return lecturas.filter(lectura => lectura.medida === medida);
 }
 const eliminarLectura = (id) => {
     const localStorageLecturas = localStorage.getItem(key);
@@ -17,4 +23,4 @@ const eliminarLectura = (id) => {
     localStorage.setItem(key, JSON.stringify(nuevasLecturas));
 }
 
-export { guardarletura, obtenerLecturas, eliminarLectura };
+export { guardarLectura, obtenerLecturas, eliminarLectura, obtenerLecturasPorMedida };
