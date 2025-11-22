@@ -42,7 +42,14 @@ function LecturaForm({ crearLectura = () => {} }) {
     });
   
   const handleSubmit = () => {
-      crearLectura({ medidor, medida, text, fecha, valor });
+      crearLectura({ 
+        medidor, 
+        medida, 
+        text, 
+        fecha, 
+        hora: fecha?.toLocaleTimeString('es-ES'), //funcion js para obteener la hora
+        valor 
+      });
   }
 
   return (
@@ -60,16 +67,16 @@ function LecturaForm({ crearLectura = () => {} }) {
           <div className="mb-3 d-flex flex-column">
             <label className="font-bold block mb-2">Tipo de medida</label>
             <div className="d-flex align-items-center">
-                  <RadioButton inputId="ingredient1" name="medida" value="kW" onChange={(e) => setMedida(e.value)} checked={medida === 'kW'} />
-                  <label htmlFor="ingredient1" className="ml-2">KiloWatts</label>
+                  <RadioButton inputId="medida1" name="medida" value="kW" onChange={(e) => setMedida(e.value)} checked={medida === 'kW'} />
+                  <label htmlFor="medida1" className="ml-2">KiloWatts</label>
             </div>
             <div className="d-flex align-items-center">
-                <RadioButton inputId="ingredient2" name="medida" value="W" onChange={(e) => setMedida(e.value)} checked={medida === 'W'} />
-                <label htmlFor="ingredient2" className="ml-2">Watts</label>
+                <RadioButton inputId="medida2" name="medida" value="W" onChange={(e) => setMedida(e.value)} checked={medida === 'W'} />
+                <label htmlFor="medida2" className="ml-2">Watts</label>
             </div>
             <div className="d-flex align-items-center">
-              <RadioButton inputId="ingredient3" name="medida" value="C" onChange={(e) => setMedida(e.value)} checked={medida === 'C'} />
-              <label htmlFor="ingredient3" className="ml-2">Temperatura</label>
+              <RadioButton inputId="medida3" name="medida" value="C" onChange={(e) => setMedida(e.value)} checked={medida === 'C'} />
+              <label htmlFor="medida3" className="ml-2">Temperatura</label>
             </div>
           </div>
           <div className="mb-3 d-flex flex-column">
