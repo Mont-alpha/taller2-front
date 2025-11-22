@@ -3,6 +3,7 @@ const key = 'lecturas';
 const guardarLectura = (lectura) => {
     const localStorageLecturas = localStorage.getItem(key);
     const lecturas = localStorageLecturas ? JSON.parse(localStorageLecturas) : [];
+    //le agrego un id basado en la fecha, mas que nada para poder eliminar las lecturas despues
     const nuevaLectura = { ...lectura, id: Date.now() }; 
     lecturas.push(nuevaLectura);
     localStorage.setItem(key, JSON.stringify(lecturas));

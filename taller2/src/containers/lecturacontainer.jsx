@@ -1,22 +1,35 @@
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/navbar'
 import LecturaForm from '../components/lecturaForm'
-import { eliminarLectura,obtenerLecturas,guardarLectura } from '../services/lecturasServices'
+import { guardarLectura } from '../services/lecturasServices'
 import { Toast } from 'primereact/toast';
 
 function LecturaContainer() {
     const toast = useRef(null);
+    const navigate = useNavigate();
+
     const handleCrearLectura = (lectura) => {
-        if (!lectura) {
-            toast.current.show({severity:'error', summary: 'Error', detail: 'Lectura inválida', life: 3000});
-            return;
-        };
-        if (!lectura.medidor || !lectura.medida || !lectura.valor || !lectura.fecha) {
-            toast.current.show({severity:'error', summary: 'Error', detail: 'Faltan campos obligatorios', life: 3000});
+
+        if (!lectura.medidor || !lectura.medida || !lectura.valor || !lectura.fecha || !lectura.text) {
+            toast.current.show({severity:'warn', summary: 'Advertencia', detail: 'Todos los campos son obligatorios', life: 3000});
             return;
         }
-        toast.current.show({severity:'success', summary: 'Éxito', detail: 'Lectura guardada correctamente', life: 3000});
-        guardarLectura(lectura);
+
+        if (lectura.valor <= 0 || lectura.valor > 500) {
+            toast.current.show({severity:'warn', summary: 'Advertencia', detail: 'El valor debe ser mayor a 0 y menor o igual a 500', life: 3000});
+            return;
+        }
+
+        const nuevaLectura = {
+            ...lectura,
+            fecha: lectura.fecha.toISOString(), // Guardamos como string ISO
+        };
+
+        guardarLectura(nuevaLectura);
+        
+        // Redirige
+        navigate('/mediciones');
     }
     
 

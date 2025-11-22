@@ -1,15 +1,13 @@
 import Navbar from "../components/navbar"
-import LecturaForm from "../components/lecturaForm"
-import LecturaTable from "../components/lecturaTable"
-import { useState, useEffect } from 'react'
-import { guardarLectura, obtenerLecturas, eliminarLectura } from '../services/lecturasServices'
 
 function Home() {
 
   return (
     <div>
       <Navbar />
-      
+      <div className="card p-4">
+        <h1>Bienvenido al sistema de Sanquinta</h1>
+      </div>
     </div>
   )
 }

@@ -13,15 +13,16 @@ function LecturaTable({ lecturas, onEliminar = () => {} }) {
         return rowData.medidor ? rowData.medidor.name : '';
     };
 
+
     const accion = (rowData) => {
-        return <Button label="Eliminar" severity="danger" onClick={() => onEliminar(rowData.id)} />;
+        return <Button label="Descartar Lectura" severity="danger" onClick={() => onEliminar(rowData.id)} />;
     };
     
   return ( 
     <div>
         <div className="card mt-2">
             <DataTable value={lecturas} tableStyle={{ minWidth: '50rem' }}>
-                <Column field="fecha" header="Fecha" ></Column>
+                <Column field="fecha" header="Fecha" sortable></Column>
                 <Column field="hora" header="Hora"></Column>
                 <Column field="medidor" header="Medidor" body={medidor}></Column>
                 <Column field="valor" header="Valor"></Column>

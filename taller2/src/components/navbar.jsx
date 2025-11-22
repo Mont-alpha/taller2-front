@@ -13,19 +13,19 @@ function Navbar() {
       )
     },
     {
-      label: 'Lecturas',
+      label: 'Mediciones Existentes',
       icon: 'pi pi-fw pi-info',
       template: (item, options) => (
-        <NavLink to="/lecturas" className={options.className}>
+        <NavLink to="/mediciones" className={options.className}>
           {item.label}
         </NavLink>
       )
     },
     {
-      label: 'Crear lectura',
+      label: 'Crear medición',
       icon: 'pi pi-fw pi-phone',
       template: (item, options) => (
-        <NavLink to="/nueva-lectura" className={options.className}>
+        <NavLink to="/nueva_medicion" className={options.className}>
           {item.label}
         </NavLink>
       )
