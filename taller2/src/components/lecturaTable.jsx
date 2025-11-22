@@ -17,7 +17,7 @@ function LecturaTable({ lecturas, onEliminar = () => {} }) {
     }
 
     const fecha = (rowData) => {
-        return rowData.fecha ? new Date(rowData.fecha).toLocaleDateString('es-ES') : ''; //convierte la fehca del formato 2025-11-22T01:01:00.000Z a uno mas simplificado
+        return rowData.fecha ? new Date(rowData.fecha).toLocaleDateString('es-ES') : ''; //convierte la fecha del formato 2025-11-22T01:01:00.000Z a uno mas simplificado
     };
 
     const accion = (rowData) => {

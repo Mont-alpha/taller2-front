@@ -40,7 +40,7 @@ function DataTableContainer() {
   
         if (selectedMedida) {
              const lecturasFiltradas = obtenerLecturasPorMedida(selectedMedida.code);
-             // Si elimino la lectura la funcion me trae denuevo la lista que staba filtrada
+             // Si elimino la lectura la funcion me trae denuevo la lista que estaba filtrada
              setLecturas(lecturasFiltradas);
         } else {
             cargarLecturas();

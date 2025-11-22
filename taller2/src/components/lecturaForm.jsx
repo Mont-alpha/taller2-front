@@ -28,7 +28,7 @@ function LecturaForm({ crearLectura = () => {} }) {
   const [text, setText] = useState('');
   const [fecha, setFecha] = useState(null);
 
-  //sacado de  la documentecion de primereact aunque en si no tiene necesidad  para el taller xd
+  //sacado de la documentacion de primereact aunque en si no tiene necesidad  para el taller xd
   addLocale('es', {
         firstDayOfWeek: 1,
         showMonthAfterYear: true,
@@ -47,7 +47,7 @@ function LecturaForm({ crearLectura = () => {} }) {
         medida, 
         text, 
         fecha, 
-        hora: fecha?.toLocaleTimeString('es-ES'), //funcion js para obteener la hora
+        hora: fecha ? fecha.toLocaleTimeString('es-ES') : '', //funcion js para obteener la hora
         valor 
       });
   }
